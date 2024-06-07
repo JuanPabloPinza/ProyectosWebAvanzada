@@ -145,6 +145,17 @@ const App = () => {
     }
   };
 
+  const handleResetClick = () => {
+    setCurrentUrl(originalUrl);
+    setShowPagination(true);
+    setSelectedType("");
+    setSelectedId("");
+    setSearchName("");
+    setError("");
+    setLoading(true);
+    getPokemons(originalUrl);
+  };
+
   useEffect(() => {
     getPokemons(currentUrl);
     getPokemonTypes();
@@ -167,6 +178,9 @@ const App = () => {
             </option>
           ))}
         </select>
+        <button className={styles.btnSearch} onClick={handleResetClick}>
+            Restablecer
+          </button>
       </div>
       <div className={styles.filterContainer}>
         <h2 className={styles.filterTitle}>Filtrar por ID:</h2>
